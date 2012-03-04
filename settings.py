@@ -1,4 +1,5 @@
 # Django settings for DynaWebKit project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -115,11 +116,23 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'DynaWebKit.database',
+    'DynaWebKit.application',
+    'DynaWebKit.common',
 )
+
+NEW_APPLICATION_PATH = '/opt/dyna_web_kit'
+
+DYNA_KIT_UID = os.getuid()
+DYNA_KIT_GID = os.getgid()
+
+DYNA_EXCEPTIONS = {
+    'management_command_exception' : 'django.core.management.base.CommandError',
+}
+
+DYNA_APP_ERROR = 'Ooops...There\'s A Problem with DynaWebKit.  Please Contact the System Administrator'
+
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
